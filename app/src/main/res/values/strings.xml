@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">LopawltyInventory</string>
+    <string name="app_name">Lopawlty Inventory</string>
+
+    <!--Menu options-->
+    <string name="menu_insert">Insert new product</string>
+    <string name="menu_list">List products</string>
+    <string name="menu_edit">Edit product</string>
+    <string name="menu_delete">Remove product</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+
+
 </resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_insert"
+            android:icon="@drawable/add_shopping_cart_white_36dp"
+            android:title="@string/menu_insert" />
+        <item
+            android:id="@+id/nav_list"
+            android:icon="@drawable/view_list_white_36dp"
+            android:title="@string/menu_list" />
+        <item
+            android:id="@+id/nav_edit"
+            android:icon="@drawable/edit_white_36dp"
+            android:title="@string/menu_edit" />
+        <item
+            android:id="@+id/nav_delete"
+            android:icon="@drawable/delete_outline_white_36dp"
+            android:title="@string/menu_delete" />
+    </group>
+
+
+
+</menu>
