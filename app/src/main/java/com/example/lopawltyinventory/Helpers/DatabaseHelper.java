@@ -31,7 +31,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL8="PostalCode";
 
     //create table and drop table sql query strings
-    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL2 + " TEXT NOT NULL, " + COL3 + " INTEGER NOT NULL, " + COL4 + " DECIMAL NOT NULL, " + COL5 + " TEXT NOT NULL, " + COL6 + " TEXT NOT NULL," + COL7 + " TEXT NOT NULL," + COL8 + " TEXT NOT NULL);";
+    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
+                                        COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                        COL2 + " TEXT NOT NULL, " +
+                                        COL3 + " INTEGER NOT NULL, " +
+                                        COL4 + " DECIMAL NOT NULL, " +
+                                        COL5 + " TEXT NOT NULL, " +
+                                        COL6 + " TEXT NOT NULL," +
+                                        COL7 + " TEXT NOT NULL," +
+                                        COL8 + " TEXT NOT NULL);";
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     //constructor, this method will be called once an instance of this class is created

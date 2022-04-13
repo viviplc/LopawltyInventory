@@ -13,4 +13,29 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="seemore_button">
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:backgroundTint">@color/blue_dark</item>
+    </style>
+
+    <style name="ProductCardContentLayout">
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+    <style name="ProductName">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/blue_dark</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="ProductLabel">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
 </resources>

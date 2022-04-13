@@ -9,6 +9,15 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+    <!-- Button names -->
+    <string name="btnSeeMore">See More</string>
+
+    <!--Product Card -->
+    <string name="lblProdtId">Product ID:</string>
+    <string name="lblProdtQty">Product Qty:</string>
+
+    <!--Product List View-->
+    <string name="lblFilter">Search your product name</string>
 
 
 </resources>
