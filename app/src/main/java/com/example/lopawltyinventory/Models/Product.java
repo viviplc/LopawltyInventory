@@ -1,4 +1,4 @@
-package com.example.lopawltyinventory;
+package com.example.lopawltyinventory.Models;
 
 //Class to model the product entity
 public class Product {

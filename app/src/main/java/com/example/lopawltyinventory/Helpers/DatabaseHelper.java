@@ -1,4 +1,4 @@
-package com.example.lopawltyinventory;
+package com.example.lopawltyinventory.Helpers;
 
 
 import android.content.ContentValues;
@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import com.example.lopawltyinventory.Models.Product;
 
 /*
 * Below code is inspired by Dunumalage Fernando's Assignment 2 Code for the DatabaseHelper class
