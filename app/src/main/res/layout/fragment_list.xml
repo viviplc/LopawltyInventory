@@ -3,12 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListFragment">
+    tools:context=".ListFragment"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:hint="@string/lblFilter"
+        android:minHeight="48dp"
+        android:completionThreshold="3"/>
+
+    <LinearLayout
+        android:layout_below="@+id/listLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Test List" />
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerView">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+
 
 </FrameLayout>
