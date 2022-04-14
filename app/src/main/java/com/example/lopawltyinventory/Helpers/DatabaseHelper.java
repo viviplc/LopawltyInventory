@@ -79,6 +79,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //the update product method will be used to update an existing row from Products table with using a Product object passed as a parameter of the method
+    public boolean UpdateProduct(Product product){
+        SQLiteDatabase db = this.getWritableDatabase(); //get the instance of the sqlite database in writable format
+
+        ContentValues contentValues = new ContentValues(); //get an instance of ContentValues to insert the values for columns
+
+        //putting the actual data from the product object to each of the specific columns
+        contentValues.put(COL2, product.getName());
+        contentValues.put(COL3, product.getQuantityInStock());
+        contentValues.put(COL4, product.getPrice());
+        contentValues.put(COL5, product.getCategory());
+        contentValues.put(COL6, product.getDescription());
+        contentValues.put(COL7, product.getAddress());
+        contentValues.put(COL8, product.getPostalCode());
+
+        //actually run the insertion command on our DB specifying the table name and contentvalues
+        long result = db.update(TABLE_NAME, contentValues, COL1 + " = " + product.getId(), null); //will return -1 if fail, if positive it is successful
+
+        //if result is -1 then return false to method else return true
+        if(result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     //method to get a cursor to view the Products data
     public Cursor viewData() {
         SQLiteDatabase db = this.getReadableDatabase(); // get a readable instance of sqlite database
