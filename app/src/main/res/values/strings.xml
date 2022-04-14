@@ -8,6 +8,26 @@
     <string name="menu_delete">Remove product</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="insertProductFragmentTitle">Insert Product</string>
+    <string name="productIdLabel">Product Id</string>
+    <string name="productNameLabel">Product Name</string>
+    <string name="productQuantityLabel">Product Quantity in Stock</string>
+    <string name="productPriceLabel">Product Price</string>
+    <string name="productCategoryLabel">Product Category</string>
+    <string name="productDescriptionLabel">Product Description</string>
+    <string name="productAddressLabel">Address</string>
+    <string name="productPostalCodeLabel">Postal Code</string>
+    <string name="insertButtonLabel">Insert Product</string>
+    <string name ="dogCategoryLabel">Dog</string>
+    <string name ="fishCategoryLabel">Fish</string>
+    <string name ="birdCategoryLabel">Bird</string>
+    <string name ="catCategoryLabel">Cat</string>
+    <string name="positive_dialog_button_text">Ok</string>
+    <string name="negative_dialog_button_text">Close</string>
+    <string name="errorNoRecord">No Records</string>
+    <string name="errorFieldError">Please enter all fields with the correct format.</string>
+    <string name="errorDb">Database error.</string>
+    <string name="successAddedRecord">Successfully added record!</string>
 
 
 
