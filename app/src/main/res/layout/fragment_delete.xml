@@ -6,9 +6,34 @@
     tools:context=".DeleteFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Test Delete" />
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/TitleDelete"
+           android:text="Delete Product"
+           android:layout_centerHorizontal="true"/>
+
+       <EditText
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:hint="Enter id of product you want to delete"
+           android:id="@+id/etdelete"
+           android:layout_below="@+id/TitleDelete"
+           android:layout_marginTop="20dp"
+           android:layout_centerHorizontal="true"
+           android:inputType="number"/>
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Delete"
+           android:id="@+id/DeleteBtn"
+           android:layout_below="@+id/etdelete"
+           android:layout_marginTop="20dp"
+           android:layout_centerHorizontal="true"/>
+   </RelativeLayout>
 
 </FrameLayout>

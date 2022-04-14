@@ -8,8 +8,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+import androidx.room.Delete;
 
 import com.example.lopawltyinventory.Models.Product;
+import com.example.lopawltyinventory.R;
 
 /*
 * Below code is inspired by Dunumalage Fernando's Assignment 2 Code for the DatabaseHelper class
@@ -77,6 +79,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+    public boolean DeleteProduct(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, COL1 + "=" + id, null) > 0;
     }
 
     //method to get a cursor to view the Products data
