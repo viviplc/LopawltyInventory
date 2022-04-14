@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-import androidx.room.Delete;
+
 
 import com.example.lopawltyinventory.Models.Product;
 import com.example.lopawltyinventory.R;
