@@ -116,7 +116,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase(); // get a readable instance of sqlite database
 
         //defining cursor variable to SELECT sql query, also ordered by id descending order
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL1 + " DESC", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL1 + " ASC", null);
 
         //return the cursor instance, moving to first if it is null
         if(cursor!= null){
