@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.lopawltyinventory.Adapters.ProductListAdapter;
@@ -26,11 +31,19 @@ public class ListFragment extends Fragment {
     private RecyclerView recyclerView;
     //List to populate the recycler view with the records of products
     private List<Product> productsList = new ArrayList<>();
+    //List to populate from the query without filter
+    private List<Product> productsShown = new ArrayList<>();
     //Adapter to set the content on productList
     private ProductListAdapter productListAdapter;
     //DataBaseHelper definition
     DatabaseHelper dataBaseHelper;
 
+    //String Array for search filter
+    private ArrayList<String> nameList;
+    //Autocomplete textfield definition
+    private AutoCompleteTextView search;
+    //Clear button definition
+    private Button clearBtn;
 
     public ListFragment() {
         // Required empty public constructor
@@ -42,6 +55,12 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
+        //Autocomplete search field instantiation
+        search = (AutoCompleteTextView) view.findViewById(R.id.autoCompleteSearch);
+        nameList = new ArrayList<>();
+        //Clear button instantiation
+        clearBtn = (Button) view.findViewById(R.id.clearBtn);
+
         //recycler view instantiation
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         //Instance of DataBaseHelper
@@ -65,37 +84,98 @@ public class ListFragment extends Fragment {
 
                     //add the product to the list of products
                     productsList.add(product);
+
+                    nameList.add(product.getId() +"- "+ product.getName());
+
                 } while (cursor.moveToNext()); //will run until the end of the records saved on DB Table Products
             }
+
+            productsShown.addAll(productsList);
             //close cursor
             cursor.close();
             //close data base helper
             dataBaseHelper.close();
 
+            /*
+            ArrayAdapter<String> searchAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,nameList);
+            search.setAdapter(searchAdapter);
+
             //Call method to link student list with the studentListAdapter
             bindProductsAdapter();
 
-            
-
             //Return the view with the students list linked to the recycle view
             return view;
+            */
         }
         else { //No content on DB
             Toast.makeText(getContext(), "No records available", Toast.LENGTH_SHORT).show();
 
             //code to test the recycler view
-            Product product = new Product(1, "Product Test", 50, 34.5, "cats", "Product to test", "Address to test", "ASD 456");
-            Product product2 = new Product(2, "Product Test 2", 20, 34.5, "dogs", "Product to test", "Address to test", "ASD 456");
-            Product product3 = new Product(3, "Product Test 3", 500, 34.5, "fish", "Product to test", "Address to test", "ASD 456");
-            Product product4 = new Product(4, "Product Test 4", 203, 34.5, "birds", "Product to test", "Address to test", "ASD 456");
+            Product product = new Product(1, "Cat Food", 50, 34.5, "cats", "Product to test", "Address to test", "ASD 456");
+            Product product2 = new Product(2, "Dog Toy", 20, 34.5, "dogs", "Product to test", "Address to test", "ASD 456");
+            Product product3 = new Product(3, "Fish bowl", 500, 34.5, "fish", "Product to test", "Address to test", "ASD 456");
+            Product product4 = new Product(4, "Bird cage", 203, 34.5, "birds", "Product to test", "Address to test", "ASD 456");
             productsList.add(product);
             productsList.add(product2);
             productsList.add(product3);
             productsList.add(product4);
-            bindProductsAdapter();
+            nameList.add(product.getId() +"- "+product.getName());
+            nameList.add(product2.getId() +"- "+product2.getName());
+            nameList.add(product3.getId() +"- "+product3.getName());
+            nameList.add(product4.getId() +"- "+product4.getName());
 
-            return view;
+            productsShown.addAll(productsList);
+
         }
+
+        ArrayAdapter<String> searchAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,nameList);
+        search.setAdapter(searchAdapter);
+
+        //Filter Search option enable
+        search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                //Hide keyboard
+                InputMethodManager inputMethodManager = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getApplicationWindowToken(),0);
+
+                //Clear the list to be shown
+                productsShown.clear();
+                String item = adapterView.getItemAtPosition(position).toString();
+                //Set the selected item on the list to display
+                Product prdSelected = findProduct(item);
+                productsShown.add(prdSelected);
+                //update the view everytime
+                productListAdapter.notifyDataSetChanged();
+            }
+
+            private Product findProduct(String item) {
+                String[] parts= item.split("-");
+                int index = Integer.parseInt(parts[0]);
+                return productsList.get(index-1);
+            }
+        });
+
+        //Method to clean the filter and update the view
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Clean the autocomplete textfield
+                search.setText("");
+                //Clear the list to be shown
+                productsShown.clear();
+                //update the view with the original content on the db
+                productsShown.addAll(productsList);
+                //update the view everytime
+                productListAdapter.notifyDataSetChanged();
+            }
+        });
+
+
+        bindProductsAdapter();
+
+        return view;
+
     }
 
     //method to link adapter which link the viewholder on the recycler view with the list of products
@@ -105,7 +185,7 @@ public class ListFragment extends Fragment {
         //link the layout to the recycleview
         recyclerView.setLayoutManager(layoutManager);
         //instance of the ProductListAdapter sending the list of product and the context of this fragment
-        productListAdapter = new ProductListAdapter (productsList, getContext());
+        productListAdapter = new ProductListAdapter (productsShown, getContext());
         //link the recyclerview to the adapter
         recyclerView.setAdapter(productListAdapter);
         //Notify the adapter of the update with the studentList
