@@ -1,7 +1,9 @@
 package com.example.lopawltyinventory.Models;
 
-//Class to model the product entity
-public class Product {
+import java.io.Serializable;
+
+//Class to model the product entity. we are implementing serializable so we can pass it in an intent
+public class Product implements Serializable {
 
     //Product fields definitions, specified with private accessor, getter and setter methods will be
     // used to access and set these
@@ -29,6 +31,21 @@ public class Product {
         this.description = description;
         this.address = address;
         this.postalCode = postalCode;
+    }
+
+    //overriding toString method to print all the fields of the product object
+    @Override
+    public String toString() {
+        return "Product {" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", quantityInStock=" + quantityInStock +
+                ", price=" + price +
+                ", category='" + category + '\'' +
+                ", description='" + description + '\'' +
+                ", address='" + address + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                '}';
     }
 
     //public getter function for id field

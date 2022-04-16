@@ -23,10 +23,10 @@
     <string name="insertButtonLabel">Insert Product</string>
     <string name="editButtonLabel">Update Product</string>
     <string name="findEditButtonLabel">Find</string>
-    <string name ="dogCategoryLabel">Dog</string>
-    <string name ="fishCategoryLabel">Fish</string>
-    <string name ="birdCategoryLabel">Bird</string>
-    <string name ="catCategoryLabel">Cat</string>
+    <string name="dogCategoryLabel">Dog</string>
+    <string name="fishCategoryLabel">Fish</string>
+    <string name="birdCategoryLabel">Bird</string>
+    <string name="catCategoryLabel">Cat</string>
 
     <!--custom dialog strings-->
     <string name="positive_dialog_button_text">Ok</string>

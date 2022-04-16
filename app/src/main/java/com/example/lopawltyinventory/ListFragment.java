@@ -1,6 +1,7 @@
 package com.example.lopawltyinventory;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -166,4 +167,6 @@ public class ListFragment extends Fragment {
         //Notify the adapter of the update with the studentList
         productListAdapter.notifyDataSetChanged();
     }
+
+
 }

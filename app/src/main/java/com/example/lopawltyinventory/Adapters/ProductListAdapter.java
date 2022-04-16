@@ -1,18 +1,22 @@
 package com.example.lopawltyinventory.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lopawltyinventory.Models.Product;
+import com.example.lopawltyinventory.ProductDetailActivity;
 import com.example.lopawltyinventory.R;
 
 import java.util.List;
@@ -52,7 +56,33 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             prodName = (TextView) itemView.findViewById(R.id.txtProductName);
             prodQty = (TextView) itemView.findViewById(R.id.txtProductQty);
             prodImg = (ImageView) itemView.findViewById(R.id.productImg);
+            setupSeeMoreButtonOnClickHandler(itemView);
         }
+
+        // method to setup the see more button click handler for every element in the product list
+        private void setupSeeMoreButtonOnClickHandler(View mainView){
+            Button seeMoreButton = (Button) mainView.findViewById(R.id.seeMoreButton);
+            seeMoreButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition(); //get the position of the adapter
+                    // check if item still exists
+                    if(pos != RecyclerView.NO_POSITION){
+                        Product selectedProduct = productLst.get(pos);
+                        startProductDetailIntent(mainView, selectedProduct);
+                        Toast.makeText(mainView.getContext(), selectedProduct.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+
+        //method to start an intent to the product detail view and send a product object to that view
+        private void startProductDetailIntent(View mainView, Product product){
+            Intent intent = new Intent(mainView.getContext(), ProductDetailActivity.class);
+            intent.putExtra("PRODUCT", product);
+            mainView.getContext().startActivity(intent);
+        }
+
     }
 
     //Method to show the viewHolder (list row)
@@ -63,8 +93,14 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_record, parent, false);
         //Linking view holder to the view inflated
         ViewHolder viewHolder = new ViewHolder(view);
+
         return viewHolder;
     }
+
+
+
+
+
 
     //Method to relate a full record from student list to the view holder fields
     @Override
