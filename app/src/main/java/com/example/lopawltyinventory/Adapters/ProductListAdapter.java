@@ -47,7 +47,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public TextView prodId, prodName, prodQty;
         public ImageView prodImg;
 
-        //constructor
+        // constructor
         public ViewHolder(@NonNull View itemView) {
             //Recycler.ViewHolder constructor call
             super(itemView);
@@ -67,10 +67,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 public void onClick(View view) {
                     int pos = getAdapterPosition(); //get the position of the adapter
                     // check if item still exists
-                    if(pos != RecyclerView.NO_POSITION){
-                        Product selectedProduct = productLst.get(pos);
-                        startProductDetailIntent(mainView, selectedProduct);
-                        Toast.makeText(mainView.getContext(), selectedProduct.toString(), Toast.LENGTH_SHORT).show();
+                    if(pos != RecyclerView.NO_POSITION) { // if the position exists
+                        Product selectedProduct = productLst.get(pos); // get the product object at that index
+                        startProductDetailIntent(mainView, selectedProduct); // start the intent from the current view
                     }
                 }
             });
@@ -78,9 +77,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         //method to start an intent to the product detail view and send a product object to that view
         private void startProductDetailIntent(View mainView, Product product){
-            Intent intent = new Intent(mainView.getContext(), ProductDetailActivity.class);
-            intent.putExtra("PRODUCT", product);
-            mainView.getContext().startActivity(intent);
+            Intent intent = new Intent(mainView.getContext(), ProductDetailActivity.class); // create an intent
+            intent.putExtra("PRODUCT", product); // put the product object into the intent to send it to the product detail view
+            mainView.getContext().startActivity(intent); // start the intent
         }
 
     }
@@ -96,11 +95,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         return viewHolder;
     }
-
-
-
-
-
 
     //Method to relate a full record from student list to the view holder fields
     @Override
