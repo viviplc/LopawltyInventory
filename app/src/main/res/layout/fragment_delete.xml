@@ -11,16 +11,17 @@
        android:layout_height="match_parent"
        >
        <TextView
+           style="@style/ProductFormTitle"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:id="@+id/TitleDelete"
-           android:text="Delete Product"
+           android:text="@string/DeleteTittle"
            android:layout_centerHorizontal="true"/>
 
        <EditText
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:hint="Enter id of product you want to delete"
+           android:hint="@string/lblDeleteSearch"
            android:id="@+id/etdelete"
            android:layout_below="@+id/TitleDelete"
            android:layout_marginTop="20dp"
@@ -29,7 +30,7 @@
        <Button
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Delete"
+           android:text="@string/deleteBtn"
            android:id="@+id/DeleteBtn"
            android:layout_below="@+id/etdelete"
            android:layout_marginTop="20dp"

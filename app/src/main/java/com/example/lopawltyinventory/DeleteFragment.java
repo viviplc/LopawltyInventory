@@ -28,26 +28,35 @@ public class DeleteFragment extends Fragment {
         setupDeleteButtonClickListener(view); // create and handle the onclick listener for when the insert button is clicked
         return view;
     }
-    private void setupDeleteButtonClickListener(View mainView){
+
+    private void setupDeleteButtonClickListener(View mainView) {
+        //instantiate the button from view
         Button DeleteButton = (Button) mainView.findViewById(R.id.DeleteBtn);
+
+        //Event listener
         DeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //instance of the edittext
                 EditText DeleteIdInput = (EditText) mainView.findViewById(R.id.etdelete);
+                //getting the id from the field
                 String ProductInt = DeleteIdInput.getText().toString();
-                int value=0;
-                if(!"".equals(ProductInt)){
-                    value=Integer.parseInt(ProductInt);
+                int value = 0;
+                //check that is not empty
+                if (!"".equals(ProductInt)) {
+                    //parse to integer
+                    value = Integer.parseInt(ProductInt);
                 }
-                Button DeleteButton = (Button) mainView.findViewById(R.id.DeleteBtn);
+                //instance of the data base helper
                 DatabaseHelper db = new DatabaseHelper(getContext());
-   if(db.DeleteProduct(value))
-   {
-       CustomDialog.Show(getParentFragmentManager(), "Successfully deleted Record" );
-   }
-   else{
-       CustomDialog.Show(getParentFragmentManager(), "Could not delete Record");
-   }
+                //call the method to delete the product from ths DB and check if the delete is successful
+                if (db.DeleteProduct(value)) {
+                    //show success dialog
+                    CustomDialog.Show(getParentFragmentManager(), "Successfully deleted Record");
+                } else {
+                    //show failed dialog
+                    CustomDialog.Show(getParentFragmentManager(), "Could not delete Record");
+                }
             }
         });
     }

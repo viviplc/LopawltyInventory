@@ -51,5 +51,10 @@
     <!--Product List View-->
     <string name="lblFilter">Search your product name</string>
 
+    <!-- Product delete view-->
+    <string name="DeleteTittle">Delete Product</string>
+    <string name="lblDeleteSearch">Enter id of product you want to delete</string>
+    <string name="deleteBtn">Delete</string>
+
 
 </resources>
