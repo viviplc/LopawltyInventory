@@ -56,5 +56,14 @@
     <string name="lblDeleteSearch">Enter id of product you want to delete</string>
     <string name="deleteBtn">Delete</string>
 
+    <!-- product detail view-->
+    <string name="productId">Product ID: </string>
+    <string name="productQty">Quantity In Stock: </string>
+    <string name="productPrice">Unit Price: </string>
+    <string name="productCtg">Category: </string>
+    <string name="productDesc">Description: </string>
+    <string name="productAdd">Address: </string>
+    <string name="productPostal">Postal Code: </string>
+
 
 </resources>

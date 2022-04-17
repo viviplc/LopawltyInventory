@@ -24,6 +24,9 @@ public class ProductDetailActivity extends FragmentActivity implements OnMapRead
     private Product product;
     private GoogleMap mMap;
 
+    //Define View components
+    TextView prodName, prodId, prodQty, prodPrice, prodCat, prodAdd, ProdPostal, prodDes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +42,25 @@ public class ProductDetailActivity extends FragmentActivity implements OnMapRead
 
     // REMOVE THIS METHOD LATER - set the product text view to the product string
     private void setTestProductTextView() {
-        TextView textView = (TextView) findViewById(R.id.productInfoTest);
-        textView.setText(product.toString());
+        //instance od the view components
+        prodName = (TextView) findViewById(R.id.productName);
+        prodId = (TextView) findViewById(R.id.productId);
+        prodQty = (TextView) findViewById(R.id.productQty);
+        prodPrice = (TextView) findViewById(R.id.productPrice);
+        prodCat = (TextView) findViewById(R.id.productCat);
+        prodAdd = (TextView) findViewById(R.id.productAdd);
+        ProdPostal = (TextView) findViewById(R.id.productPostal);
+        prodDes = (TextView) findViewById(R.id.productDes);
+
+        //Set components content
+        prodName.setText(product.getName());
+        prodId.setText(Integer.toString(product.getId()));
+        prodQty.setText(Integer.toString(product.getQuantityInStock()));
+        prodPrice.setText("$ " + Double.toString(product.getPrice()));
+        prodCat.setText(product.getCategory());
+        prodAdd.setText(product.getAddress());
+        ProdPostal.setText(product.getPostalCode());
+        prodDes.setText(product.getDescription());
     }
 
     //on map ready to handle the method when the map is ready
